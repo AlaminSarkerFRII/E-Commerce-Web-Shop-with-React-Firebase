@@ -7,7 +7,7 @@ import RegisterPage from "./pages/RegisterPage";
 import ProductInfo from "./pages/ProductInfo";
 import CartPage from "./pages/CartPage";
 import NotFoundPage from "./pages/NotFoundPage";
-
+import "./stylesheets/Layout.css";
 function App() {
   return (
     <div className="App">
