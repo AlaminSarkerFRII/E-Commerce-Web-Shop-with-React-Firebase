@@ -18,7 +18,7 @@ const RegisterPage = () => {
             autoplay
           ></lottie-player>
         </div>
-        <div className="col-md-4">
+        <div className="col-md-4 z1">
           <div className="register-form">
             <h2>Register</h2>
             <hr />
