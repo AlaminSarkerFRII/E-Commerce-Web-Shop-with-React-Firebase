@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import ProductInfo from "./pages/ProductInfo";
+import CartPage from "./pages/CartPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route path="/" exact element={<HomePage></HomePage>}></Route>
+        <Route path="/login" element={<LoginPage></LoginPage>}></Route>
+        <Route path="/register" element={<RegisterPage></RegisterPage>}></Route>
+        <Route
+          path="/productinfo"
+          element={<ProductInfo></ProductInfo>}
+        ></Route>
+        <Route path="/cart" element={<CartPage></CartPage>}></Route>
+        <Route path="*" element={<NotFoundPage></NotFoundPage>}></Route>
+      </Routes>
     </div>
   );
 }
