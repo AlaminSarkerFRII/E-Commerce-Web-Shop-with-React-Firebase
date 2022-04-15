@@ -4,14 +4,13 @@ import { collection, addDoc, getDocs } from "firebase/firestore";
 import fireDB from "../firebase.config";
 import { products } from "../../src/products.json";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
 const HomePage = () => {
-  // call to data cart item
-
-  const { cartItem } = useSelector((state) => state.cartReducer);
-
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { cartItems } = useSelector((state) => state.cartReducer);
 
   useEffect(() => {
     getData();
@@ -33,6 +32,19 @@ const HomePage = () => {
       console.log(error);
     }
   }
+
+  // set selected cart item in local storage
+
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }, [cartItems]);
+
+  // add to cart
+
+  const addToCart = (product) => {
+    dispatch({ type: "ADD_TO_CART", payload: product });
+  };
+
   return (
     <Layout>
       <div className="container">
@@ -50,7 +62,12 @@ const HomePage = () => {
                   <div className="product-actions">
                     <h2>{product.price} TAKA/-</h2>
                     <div className="d-flex">
-                      <button className="mx-2">Add To Cart</button>
+                      <button
+                        className="mx-2"
+                        onClick={() => addToCart(product)}
+                      >
+                        Add To Cart
+                      </button>
                       <button
                         onClick={() => navigate(`/productinfo/${product.id}`)}
                       >

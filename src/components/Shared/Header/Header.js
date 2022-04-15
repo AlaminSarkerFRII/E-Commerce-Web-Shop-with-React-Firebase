@@ -1,8 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+  // call to data cart item
+  const { cartItems } = useSelector((state) => state.cartReducer);
+
   return (
     <div className="header">
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -41,8 +45,8 @@ const Header = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/">
-                  Cart
+                <Link className="nav-link" to="/cart">
+                  Cart {cartItems.length}
                 </Link>
               </li>
             </ul>
