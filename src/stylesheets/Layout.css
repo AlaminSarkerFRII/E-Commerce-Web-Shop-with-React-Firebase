@@ -1,11 +1,35 @@
+/* header style */
+.header{
+    position: fixed;
+    top: 0;
+    left:0;
+    right: 0;
+    z-index: 2;
+}
+
+.content{
+    padding-top: 80px;
+}
 .navbar{
     background-color: rgb(30, 52, 118) !important;
 }
 .navbar-brand{
     color: white !important;
     font-weight: bold;
-  
 }
 .nav-link{
     color:white!important;
+}
+
+/* footer */
+
+.footer{
+    color:bisque;
+    padding:10px;
+    text-align: center;
+    background-color:rgb(69, 88, 149) ;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right:0;
 }
