@@ -33,3 +33,18 @@
     left: 0;
     right:0;
 }
+
+/* button */
+
+button{
+    box-shadow: none;
+    background-color: rgb(59, 59, 236);
+    border:1px solid rgba(255, 255, 255, 0.883);
+    color:beige;
+    padding: 5px;
+}
+
+button:hover{
+    background-color: tomato;
+}
+

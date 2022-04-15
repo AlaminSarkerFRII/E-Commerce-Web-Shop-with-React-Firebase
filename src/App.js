@@ -6,6 +6,7 @@ import ProductInfo from "./pages/ProductInfo";
 import CartPage from "./pages/CartPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import "./stylesheets/Layout.css";
+import "./stylesheets/Product.css";
 function App() {
   return (
     <div className="App">
@@ -14,7 +15,7 @@ function App() {
         <Route path="/login" element={<LoginPage></LoginPage>}></Route>
         <Route path="/register" element={<RegisterPage></RegisterPage>}></Route>
         <Route
-          path="/productinfo"
+          path="/productinfo/:productId"
           element={<ProductInfo></ProductInfo>}
         ></Route>
         <Route path="/cart" element={<CartPage></CartPage>}></Route>

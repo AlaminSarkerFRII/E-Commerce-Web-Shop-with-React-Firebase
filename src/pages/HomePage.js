@@ -1,62 +1,69 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "../components/Shared/Layout/Layout";
 import { collection, addDoc, getDocs } from "firebase/firestore";
 import fireDB from "../firebase.config";
-import Products from "../../src/products.json";
+import { products } from "../../src/products.json";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 const HomePage = () => {
-  // adding data from fire store
-  async function handleAddToData() {
+  // call to data cart item
+
+  const { cartItem } = useSelector((state) => state.cartReducer);
+
+  const [products, setProducts] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  async function getData() {
     try {
-      await addDoc(collection(fireDB, "users"), { name: "Sarker", age: 26 });
-    } catch (error) {
-      console.log(error);
-    }
-  }
-  // adding data from fire store
-  async function handleGetToData() {
-    try {
-      const users = await getDocs(collection(fireDB, "users"), {
-        name: "Sarker",
-        age: 26,
-      });
-      const usersArray = [];
+      const users = await getDocs(collection(fireDB, "products"));
+      const productsArray = [];
       users.forEach((doc) => {
         const obj = {
           id: doc.id,
           ...doc.data(),
         };
-        usersArray.push(obj);
+        productsArray.push(obj);
       });
-      console.log(usersArray);
+      setProducts(productsArray);
     } catch (error) {
       console.log(error);
     }
   }
-
-  // load data from products json file
-
-  function handleAddToProducts() {
-    Products.map(async (product) => {
-      try {
-        await addDoc(collection(fireDB, "products"), product);
-      } catch (error) {
-        console.log(error);
-      }
-    });
-  }
-
   return (
     <Layout>
-      <h2>This Is Home Page </h2>
-      <button onClick={handleAddToData} className="btn btn-primary">
-        Add Data To Firebase
-      </button>
-      <button onClick={handleGetToData} className="btn btn-primary ms-3">
-        Get Data from FStore
-      </button>
-      <button onClick={handleAddToProducts} className="btn btn-primary ms-3">
-        Load Data
-      </button>
+      <div className="container">
+        <div className="row">
+          {products.map((product) => {
+            return (
+              <div className="col-md-4">
+                <div className="product-details m-2 p-1 position-relative">
+                  <div className="product-content">
+                    <p className="text-center mt-2">{product.title}</p>
+                    <div className="text-center mb-3">
+                      <img src={product.image} alt="" className="product-img" />
+                    </div>
+                  </div>
+                  <div className="product-actions">
+                    <h2>{product.price} TAKA/-</h2>
+                    <div className="d-flex">
+                      <button className="mx-2">Add To Cart</button>
+                      <button
+                        onClick={() => navigate(`/productinfo/${product.id}`)}
+                      >
+                        VIEW
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
     </Layout>
   );
 };
