@@ -1,0 +1,37 @@
+/* this css for login and register */
+/* 
+.form-control{
+    box-shadow: none;
+}
+
+.form-control:focus{
+    box-shadow: none !important;
+}
+
+*/
+
+.register-parent{
+    min-height: 100vh;
+    background-color: rgb(178, 191, 187);
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+} 
+
+ .register-parent .row{
+    min-height: 100vh;
+    align-items: center;
+}
+
+.register-top{
+    height: 50%;
+    background-color: rgba(17, 137, 137, 0.843);
+}
+
+.register-form {
+    padding:20px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    background-color: aliceblue;
+}
+

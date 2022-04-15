@@ -7,6 +7,8 @@ import CartPage from "./pages/CartPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import "./stylesheets/Layout.css";
 import "./stylesheets/Product.css";
+import "./stylesheets/Authentication.css";
+
 function App() {
   return (
     <div className="App">
