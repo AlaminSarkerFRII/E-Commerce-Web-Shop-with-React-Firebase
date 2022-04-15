@@ -1,9 +1,13 @@
 import React from "react";
+import Footer from "../Footer/Footer";
+import Header from "../Header/Header";
 
-const Layout = () => {
+const Layout = (props) => {
   return (
     <div>
-      <h2>Layout</h2>
+      <Header></Header>
+      <div className="content">{props.children}</div>
+      <Footer></Footer>
     </div>
   );
 };
