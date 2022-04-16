@@ -52,13 +52,13 @@
     align-items: center;
 }
 
-.login-top{
+.login-bottom{
     height: 50%;
     background-color: rgba(17, 137, 137, 0.843);
     position: absolute;
     right: 0;
     left: 0;
-    top: 0;
+    bottom: 0;
 }
 
 .login-form {

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const RegisterPage = () => {
   const [email, setEmail] = useState("");
@@ -50,6 +51,13 @@ const RegisterPage = () => {
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
             <button>REGISTER</button>
+            <hr />
+            <p>
+              Already have an Account ?
+              <Link to="/login" className="text-decoration-none px-2 fw-bold">
+                Please Login
+              </Link>
+            </p>
           </div>
         </div>
       </div>
