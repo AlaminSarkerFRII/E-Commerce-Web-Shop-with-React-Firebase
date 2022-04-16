@@ -1,10 +1,28 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { toast } from "react-toastify";
 
 const RegisterPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
+  const auth = getAuth();
+
+  const Register = async () => {
+    try {
+      const result = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      toast.success("Registration Successful");
+    } catch (error) {
+      console.log(error);
+      toast.error("Registration Failed");
+    }
+  };
 
   return (
     <div className="register-parent">
@@ -50,7 +68,7 @@ const RegisterPage = () => {
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
-            <button>REGISTER</button>
+            <button onClick={Register}>REGISTER</button>
             <hr />
             <p>
               Already have an Account ?

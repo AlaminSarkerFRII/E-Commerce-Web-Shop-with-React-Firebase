@@ -8,10 +8,13 @@ import NotFoundPage from "./pages/NotFoundPage";
 import "./stylesheets/Layout.css";
 import "./stylesheets/Product.css";
 import "./stylesheets/Authentication.css";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
-    <div className="App">
+    <div>
+      <ToastContainer />
       <Routes>
         <Route path="/" exact element={<HomePage></HomePage>}></Route>
         <Route path="/login" element={<LoginPage></LoginPage>}></Route>

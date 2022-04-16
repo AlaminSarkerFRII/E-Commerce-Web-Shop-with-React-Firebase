@@ -1,9 +1,26 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { toast } from "react-toastify";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const auth = getAuth();
+
+  // loaing
+  const Login = async () => {
+    try {
+      const result = await signInWithEmailAndPassword(auth, email, password);
+      localStorage.setItem("currentUser", JSON.stringify(result));
+      toast.success("Login Successful");
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+      toast.error("Login Failed");
+    }
+  };
   return (
     <div className="login-parent">
       <div className="row justify-content-center">
@@ -29,7 +46,7 @@ const LoginPage = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <button>Login</button>
+            <button onClick={Login}>Login</button>
 
             <hr />
             <p>

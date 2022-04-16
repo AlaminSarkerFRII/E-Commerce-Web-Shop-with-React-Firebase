@@ -7,6 +7,10 @@ const Header = () => {
   // call to data cart item
   const { cartItems } = useSelector((state) => state.cartReducer);
 
+  //set user in ui
+
+  const { user } = JSON.parse(localStorage.getItem("currentUser"));
+
   return (
     <div className="header">
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -31,7 +35,7 @@ const Header = () => {
             <ul className="navbar-nav text-white ms-auto">
               <li className="nav-item">
                 <Link className="nav-link active" aria-current="page" to="/">
-                  user
+                  {user.email.slice(0, 5)}
                 </Link>
               </li>
               <li className="nav-item">
